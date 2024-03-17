@@ -1,5 +1,17 @@
+import React from 'react';
+import { useRandomPhoto } from 'queries/images';
+import BackgroundImage from 'components/Background';
+import Input from 'components/Input';
+
 const Home = () => {
-  return <h1>Home</h1>;
+  const { data: randomImage } = useRandomPhoto();
+  return (
+    <BackgroundImage imageUrl={randomImage?.data?.urls?.regular}>
+      <div className="p-4">
+        <Input />
+      </div>
+    </BackgroundImage>
+  );
 };
 
 export default Home;
