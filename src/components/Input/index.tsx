@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Input = () => {
+type InputProps = {
+  onChange: (query: string) => void;
+};
+
+const Input = ({ onChange }: InputProps) => {
   return (
-    <>
-      <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
-        Search
-      </label>
+    <div className="p-4">
       <div className="relative">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
           <svg
@@ -29,9 +30,10 @@ const Input = () => {
           id="search"
           className="block p-4 ps-10 w-1/2 text-sm bg-gray-200 rounded-lg focus:border-gray-100 focus:bg-white focus:border-2 focus:outline-none dark:bg-gray-100"
           placeholder="Search high-resolution images"
+          onChange={(event) => onChange(event?.target?.value)}
         />
       </div>
-    </>
+    </div>
   );
 };
 
