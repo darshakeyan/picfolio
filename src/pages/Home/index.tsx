@@ -5,6 +5,8 @@ import Input from 'components/Input';
 
 const Home = () => {
   const { data: randomImage } = useRandomPhoto();
+  // const { data: photos } = useInfinitePhotos();
+  // console.log(photos);
   return (
     <BackgroundImage imageUrl={randomImage?.data?.urls?.regular}>
       <div className="p-4">

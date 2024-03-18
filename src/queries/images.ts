@@ -1,5 +1,10 @@
+import { useMemo } from 'react';
 import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
+import {
+  useQuery,
+  QueryFunctionContext,
+  useInfiniteQuery,
+} from '@tanstack/react-query';
 
 const BASE_API_URL = 'https://api.unsplash.com/';
 
