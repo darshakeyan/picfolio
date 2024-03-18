@@ -43,16 +43,13 @@ export const useRandomPhoto = () => {
 };
 
 export const usePhotos = (query: any) => {
-
   const queryKey = useMemo(() => {
     return ["photos", query];
   }, [query]);
-
   return useInfiniteQuery({
     queryKey: queryKey,
     queryFn: getPhotos,
     getNextPageParam: (lastPage:any) => {
-      console.log('what is here??', lastPage);
       const dataLength = lastPage?.data?.results?.length; // length of the results 30
       const total = lastPage?.data?.total; // total items
       if (dataLength < total) {

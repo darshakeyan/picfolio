@@ -51,7 +51,7 @@ const Home = () => {
                   key={result?.id}
                   className={`h-${result?.height} w-${result?.width}`}
                 >
-                  <UnslashImage imageSource={result?.urls?.regular} />
+                  <UnslashImage imageData={result} />
                 </div>
               );
             })}

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { BookmarkContext } from 'context/BookmarkContext';
+import Mansonry from 'components/Masonry';
 
 const Starred = () => {
-  return <h1>Starred</h1>;
+  const { bookmarks, toggleBookmark } = useContext(BookmarkContext);
+  return <Mansonry photos={bookmarks} />;
 };
 
 export default Starred;
