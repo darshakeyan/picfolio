@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useRandomPhoto, usePhotos } from 'queries/images';
 import BackgroundImage from 'components/Background';
 import Input from 'components/Input';
@@ -7,10 +7,11 @@ import UnslashImage from 'components/UnsplashImage';
 import Spinner from 'components/Spinner';
 import { useDebounce } from 'hooks/useDebounce';
 import { useInView } from 'react-intersection-observer';
+import { BookmarkContext } from 'context/BookmarkContext';
 
 const Home = () => {
   const { ref, inView } = useInView();
-  const [query, setQuery] = useState<string>('');
+  const { query, setQuery } = useContext(BookmarkContext);
   const debouncedSearchValue = useDebounce(query || '', 600);
   const { data: randomImage } = useRandomPhoto();
   const {
@@ -42,7 +43,7 @@ const Home = () => {
   return (
     <BackgroundImage imageUrl={randomImage?.data?.urls?.regular}>
       <div className="flex flex-col h-screen">
-        <Input onChange={setQuery} />
+        <Input onChange={setQuery} value={query} />
         <div className="p-4 m-4 bg-white bg-opacity-30 border-1 border-white rounded-lg h-auto overflow-y-scroll">
           <div className="flex justify-center items-center">
             {photosData?.length === 0 && (

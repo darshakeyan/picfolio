@@ -9,6 +9,7 @@ const initialValue = {};
 export const BookmarkContext = createContext<any>(initialValue);
 
 export const BookmarkProvider = ({ children }: any) => {
+  const [query, setQuery] = useState<any>('');
   const [bookmarks, setBookmarks] = useState<any>([]);
 
   const toggleBookmark = (imageData: any) => {
@@ -20,7 +21,9 @@ export const BookmarkProvider = ({ children }: any) => {
   };
 
   return (
-    <BookmarkContext.Provider value={{ bookmarks, toggleBookmark }}>
+    <BookmarkContext.Provider
+      value={{ bookmarks, toggleBookmark, query, setQuery }}
+    >
       {children}
     </BookmarkContext.Provider>
   );

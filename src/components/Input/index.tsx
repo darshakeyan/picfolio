@@ -2,9 +2,10 @@ import React from 'react';
 
 type InputProps = {
   onChange: (query: string) => void;
+  value: string;
 };
 
-const Input = ({ onChange }: InputProps) => {
+const Input = ({ onChange, value }: InputProps) => {
   return (
     <div className="p-4">
       <div className="relative">
@@ -30,6 +31,7 @@ const Input = ({ onChange }: InputProps) => {
           id="search"
           className="block p-4 ps-10 w-1/2 text-sm bg-gray-200 rounded-lg focus:border-gray-100 focus:bg-white focus:border-2 focus:outline-none dark:bg-gray-100"
           placeholder="Search high-resolution images"
+          value={value}
           onChange={(event) => onChange(event?.target?.value)}
         />
       </div>
